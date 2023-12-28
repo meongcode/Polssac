@@ -7,7 +7,7 @@ using UnityEngine.TextCore.Text;
 public class PlayerBulletMove : MonoBehaviour
 {
     private Vector3 direction;
-    private float damage = 10;
+    private float damage = 100;
     private void OnEnable()
     {
         direction = transform.parent.parent.GetChild(0).gameObject.GetComponent<CharacterAction>().GetCharacter().flipX ? new Vector2(-0.1f, 0) : new Vector2(0.1f, 0);
@@ -27,8 +27,11 @@ public class PlayerBulletMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Character>().Hit(damage);
-            Debug.Log("적에게 피해");
+            if (collision.gameObject.GetComponent<Enemy>().Hit(damage))
+            {
+                Debug.Log("죽였다");
+                transform.parent.parent.GetChild(0).gameObject.GetComponent<CharacterAction>().enemyKillCount++;
+            }
             gameObject.SetActive(false);
         }
         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "EnterDoor")

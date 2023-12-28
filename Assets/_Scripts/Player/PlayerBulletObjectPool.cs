@@ -20,8 +20,8 @@ public class PlayerBulletObjectPool : MonoBehaviour
     {
         _movementEventController.AttackEvent += Shot;
 
-        gameObjects = new GameObject[50];
-        for (int i = 0; i < 50; i++)
+        gameObjects = new GameObject[10];
+        for (int i = 0; i < 10; i++)
         {
             GameObject gameObject = Instantiate(bulletObject,transform);
             gameObjects[i] = gameObject; 
@@ -32,7 +32,7 @@ public class PlayerBulletObjectPool : MonoBehaviour
     private void Shot()
     {
         gameObjects[pivot++].SetActive(true);
-        if (pivot == 50) pivot = 0;
+        if (pivot == 10) pivot = 0;
     }
 
 

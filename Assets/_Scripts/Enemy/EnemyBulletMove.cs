@@ -8,13 +8,13 @@ public class EnemyBulletMove : MonoBehaviour
     private float damage = 5;
     private void OnEnable()
     {
-        direction = (GameManager.Instance.player.transform.position - transform.position).normalized; //델타타임 테스트
+        direction = (GameObject.FindWithTag("Player").transform.position - transform.parent.position).normalized;
         transform.position = transform.parent.position;
     }
 
+
     private void FixedUpdate()
     {
-
         transform.position += direction * 5f * Time.deltaTime;
     }
 
@@ -23,7 +23,7 @@ public class EnemyBulletMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Character>().Hit(damage);
+            collision.gameObject.GetComponent<Player>().Hit(damage);
             Debug.Log("아군에게 피해");
             gameObject.SetActive(false);
         }
@@ -33,8 +33,4 @@ public class EnemyBulletMove : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-
-
-
 }

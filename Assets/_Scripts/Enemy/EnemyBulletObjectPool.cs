@@ -15,8 +15,8 @@ public class EnemyBulletObjectPool : MonoBehaviour
     }
     void Start()
     {
-        gameObjects = new GameObject[50];
-        for (int i = 0; i < 50; i++)
+        gameObjects = new GameObject[5];
+        for (int i = 0; i < 5; i++)
         {
             GameObject gameObject = Instantiate(bulletObject, transform);
             gameObjects[i] = gameObject;
@@ -28,7 +28,7 @@ public class EnemyBulletObjectPool : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gameObjects[pivot++].SetActive(true);
-        if (pivot == 50) pivot = 0;
+        if (pivot == 5) pivot = 0;
         StartCoroutine("EnemyBullet");
     }
 }

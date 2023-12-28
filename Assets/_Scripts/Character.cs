@@ -16,18 +16,5 @@ public class Character : MonoBehaviour
         Hp = 200;
     }
 
-    public void Hit(float value)
-    {
-        Hp -= value;
-        if (Hp <= 0) 
-        {
-            Death();
-        }
-    }
-
-    private void Death()
-    {
-        Debug.Log("Á×À½");
-        gameObject.SetActive(false);
-    }
+    
 }

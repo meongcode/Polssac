@@ -29,7 +29,6 @@ public class PlayerController : MovementEventController
     }
     public void OnAttack()
     {
-        Debug.Log("아무거나");
         CallAttackEvent();
     }
     public void OnJump()

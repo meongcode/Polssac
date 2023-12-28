@@ -7,6 +7,8 @@ public class CharacterAction : MonoBehaviour
 
     private MovementEventController _movementEventController;
     private PlayerBulletMove _playBulletMove;
+    public int enemyKillCount = 0;
+    public bool nextToStage = false;
     public SpriteRenderer GetCharacter() { return character; }
 
     #region Move Variables  
@@ -83,6 +85,16 @@ public class CharacterAction : MonoBehaviour
     {
         Vector2 direction = moveDirection * speed;
         _rigidbody2D.velocity = direction;
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnterDoor" && enemyKillCount >= 5)
+        {
+            Debug.Log("´ê¾Ò³Ä");
+            
+            nextToStage = true;
+            Debug.Log(nextToStage);
+        }
     }
 }
 
