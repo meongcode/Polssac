@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,8 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject enterDoor;
     public GameObject player;
+    public GameObject endPopUp;
 
     public float timeDelay;
+    public int StageCount = 0;
 
     
     
@@ -36,12 +39,21 @@ public class GameManager : MonoBehaviour
 
     private void ReSpawnObject()
     {
-        if (player.transform.GetChild(0).GetComponent<CharacterAction>().nextToStage == true )
+        if (StageCount > 3)
         {
-            EnemyPrefeb();
-            player.transform.GetChild(0).position = new Vector2(-7.5f,0);
-            player.transform.GetChild(0).GetComponent<CharacterAction>().enemyKillCount = 0;
-            player.transform.GetChild(0).GetComponent<CharacterAction>().nextToStage = false;
+            endPopUp.SetActive(true);
+        }
+        if (player.transform.GetChild(0).GetComponent<CharacterAction>().nextToStage == true)
+        {
+            StageCount++;
+            if (StageCount <= 2)
+            {
+                EnemyPrefeb();
+                player.transform.GetChild(0).position = new Vector2(-7.5f, 0);
+                player.transform.GetChild(0).GetComponent<CharacterAction>().enemyKillCount = 0;
+                player.transform.GetChild(0).GetComponent<CharacterAction>().nextToStage = false;
+            }
+            
         }
     }
     #region Instantiate

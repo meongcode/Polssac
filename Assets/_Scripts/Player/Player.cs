@@ -16,5 +16,6 @@ public class Player : Character
     private void Death()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.endPopUp.SetActive(true);
     }
 }

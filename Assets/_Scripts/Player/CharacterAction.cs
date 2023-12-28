@@ -90,10 +90,7 @@ public class CharacterAction : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnterDoor" && enemyKillCount >= 5)
         {
-            Debug.Log("´ê¾Ò³Ä");
-            
             nextToStage = true;
-            Debug.Log(nextToStage);
         }
     }
 }
