@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.TextCore.Text;
 
 public class PlayerController : MovementEventController
@@ -15,12 +16,6 @@ public class PlayerController : MovementEventController
     {
         _camera = Camera.main;
     }
-
-    private void Start()
-    {
-        GameManager.Instance.PlayerTranform(gameObject);
-    }
-
     public void OnMove(InputValue value)
     {
         Vector2 moveValue = value.Get<Vector2>().normalized;
@@ -34,6 +29,7 @@ public class PlayerController : MovementEventController
     }
     public void OnAttack()
     {
+        Debug.Log("아무거나");
         CallAttackEvent();
     }
     public void OnJump()

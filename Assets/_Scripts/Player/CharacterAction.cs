@@ -1,16 +1,20 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterAction : MonoBehaviour
 {
 
     private MovementEventController _movementEventController;
+    private PlayerBulletMove _playBulletMove;
+    public SpriteRenderer GetCharacter() { return character; }
 
     #region Move Variables  
     [SerializeField] private float speed;
     private Vector2 _moveDirection;
     private Vector2 _lookDirection;
     private Rigidbody2D _rigidbody2D;
+    private Vector2 direction = new Vector2 (0,0);
     #endregion
 
     #region LookForward Variables  
@@ -31,6 +35,7 @@ public class CharacterAction : MonoBehaviour
         _movementEventController.JumpEvent += Jump;
         _movementEventController.EffectEvent += Effect;
         Hit();
+        
     }
 
     
@@ -43,7 +48,6 @@ public class CharacterAction : MonoBehaviour
     private void Move(Vector2 moveDirection) //Animation Signal -> Bool
     {
         _moveDirection = moveDirection;
-        Debug.Log(_moveDirection);
     }
     private void LookForward(Vector2 lookDirection)
     {
@@ -56,6 +60,7 @@ public class CharacterAction : MonoBehaviour
         else if (_lookDirection.x < 0)
         {
             character.flipX = true;
+            
         }
     }
     private void Attack() //Animation Signal -> Trigger

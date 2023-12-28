@@ -1,30 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBulletObjectPool : MonoBehaviour
 {
+    private MovementEventController _movementEventController;
     public GameObject bulletObject;
     public GameObject[] gameObjects;
     private int pivot = 0;
+
+    private void Awake()
+    {
+        _movementEventController = transform.parent.GetChild(0).gameObject.GetComponent<MovementEventController>();
+    }
     void Start()
     {
+        _movementEventController.AttackEvent += Shot;
+
         gameObjects = new GameObject[50];
         for (int i = 0; i < 50; i++)
         {
-            GameObject gameObject = Instantiate(bulletObject);
+            GameObject gameObject = Instantiate(bulletObject,transform);
             gameObjects[i] = gameObject; 
             gameObject.SetActive(false);
         }
-        StartCoroutine("EnableBullet");
     }
-    IEnumerator EnableBullet()
+
+    private void Shot()
     {
-        yield return new WaitForSeconds(0.5f);
         gameObjects[pivot++].SetActive(true);
         if (pivot == 50) pivot = 0;
-        StartCoroutine("EnableBullet");
     }
-    
+
+
+
 }

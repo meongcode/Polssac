@@ -131,28 +131,6 @@
                 },
                 {
                     "name": "",
-                    "id": "2514ef67-b17b-4810-9f84-054998ffca58",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a299b75e-a387-4795-a305-24e6960298cd",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6b178982-7a41-4e41-8160-ccf2816aebfa",
                     "path": "<Keyboard>/f",
                     "interactions": "",
